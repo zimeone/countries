@@ -223,7 +223,7 @@ function sortFunction(array, key) {
 		}
 		return 0;
 	});
-	if (key == 'name') {
+	if (key === 'name') {
 		array.reverse();
 	}
 	return array;
