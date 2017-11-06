@@ -31,6 +31,14 @@ class Country extends React.Component {
 		});
 	}
 
+	selectCountry(numericCode) {
+		this.props.selectCountry(numericCode);
+		this.setState({
+			destination: '',
+			routeToDestination: '',
+		})
+	}
+
 	/* Calculates shortest path to destination country */
 	pathToCountry(destination, pathSoFar = [], solution = null) {
 		pathSoFar = pathSoFar.slice();
@@ -77,7 +85,7 @@ class Country extends React.Component {
 		const neighbors = this.props.country.borders.map((neighbor) => {
 			let country = getCountryByAlpha3Code(this.props.countries, neighbor);
 			return(
-				<li className="link" onClick={() => {this.props.selectCountry(country.numericCode)}} key={country.numericCode}>{country.name}</li>
+				<li className="link" onClick={() => {this.selectCountry(country.numericCode)}} key={country.numericCode}>{country.name}</li>
 			);
 		});
 		let routeToDestination = '';
